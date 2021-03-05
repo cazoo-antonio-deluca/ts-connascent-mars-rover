@@ -20,7 +20,7 @@ describe('Connascent MarsRover Acceptance Tests', () => {
         marsRoverReceiver = new MarsRoverReceiver();
         marsRoverSender = new MarsRoverSender(nasaAntenna);
         let marsRoverController: MarsRoverController = new MarsRoverController();
-        let marsRoverBus: ServiceBus = new ServiceBus();
+        let marsRoverBus: ServiceBus = new ServiceBus(marsRoverController, marsRoverSender);
         marsRover = new MarsRover(marsRoverBus, marsRoverReceiver, marsRoverSender, marsRoverController);
     })
 

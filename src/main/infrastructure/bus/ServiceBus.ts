@@ -1,20 +1,15 @@
 import {IMessageReceivedBus} from "./IMessageReceivedBus";
-import {ISendFinalStateBus} from "./ISendFinalStateBus";
 import {ISendNotificationBus} from "./ISendNotificationBus";
-import {IReadMessages} from "../IReadMessages";
 import {IProcessMessages} from "../IProcessMessages";
 import {ISendNotifications} from "../ISendNotifications";
 
-export class ServiceBus implements IMessageReceivedBus, ISendFinalStateBus, ISendNotificationBus, IReadMessages {
+export class ServiceBus implements IMessageReceivedBus, ISendNotificationBus {
 
     private marsRoverController!: IProcessMessages;
     private marsRoverSender!: ISendNotifications;
 
-    callback(marsRoverController: IProcessMessages): void {
+    constructor(marsRoverController: IProcessMessages, marsRoverSender: ISendNotifications) {
         this.marsRoverController = marsRoverController;
-    }
-
-    trigger(marsRoverSender: ISendNotifications): void {
         this.marsRoverSender = marsRoverSender;
     }
 

@@ -2,7 +2,6 @@ import {IProcessMessages} from "./IProcessMessages";
 import {MarsRoverEngine} from "../app/MarsRoverEngine";
 import {CommandInterpreter} from "../app/CommandInterpreter";
 import {ISendNotificationBus} from "./bus/ISendNotificationBus";
-import {IReadMessages} from "./IReadMessages";
 import {ICommand} from "../commands/ICommand";
 import {Position} from "../model/Position";
 
@@ -20,10 +19,6 @@ export class MarsRoverController implements IProcessMessages {
 
     writesTo(marsRoverServiceBus: ISendNotificationBus): void {
         this.marsRoverServiceWriter = marsRoverServiceBus;
-    }
-
-    readsFrom(marsRoverServiceBus: IReadMessages): void {
-        marsRoverServiceBus.callback(this);
     }
 
     process(messageReceived: string): void {

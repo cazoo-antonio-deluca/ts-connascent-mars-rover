@@ -1,5 +1,4 @@
 import {ISendNotifications} from "../ISendNotifications";
-import {ISendFinalStateBus} from "../bus/ISendFinalStateBus";
 import {INasaAntenna} from "./INasaAntenna";
 
 export class MarsRoverSender implements ISendNotifications {
@@ -9,10 +8,6 @@ export class MarsRoverSender implements ISendNotifications {
 
     constructor(nasaAntenna: INasaAntenna) {
         this.nasaAntenna = nasaAntenna;
-    }
-
-    readsFrom(marsRoverServiceBus: ISendFinalStateBus): void {
-        marsRoverServiceBus.trigger(this);
     }
 
     send(message: string): void {

@@ -18,9 +18,6 @@ export class MarsRover {
 
         this.marsRoverReceiver.writesTo(this.marsRoverServiceBus);
 
-        this.controller.readsFrom(this.marsRoverServiceBus);
         this.controller.writesTo(this.marsRoverServiceBus);
-
-        this.marsRoverSender.readsFrom(this.marsRoverServiceBus);
     }
 }
